@@ -2,7 +2,6 @@ package service;
 
 import repository.PetRepository;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class PetService {
