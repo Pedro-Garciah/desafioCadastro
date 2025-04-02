@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0eb16970-0ab4-4965-9610-d7a4c8a064fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/PetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/PetRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/PetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/PetService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -43,7 +43,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feat/menu-inicial",
+    "git-widget-placeholder": "feat/save-pet",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
