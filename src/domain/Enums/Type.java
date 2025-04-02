@@ -1,6 +1,5 @@
 package domain.Enums;
 
 public enum Type {
-    CACHORRO, GATO;
-
+    CACHORRO, GATO
 }
