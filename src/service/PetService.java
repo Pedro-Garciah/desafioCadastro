@@ -32,7 +32,7 @@ public class PetService {
 
             switch (option) {
                 case 1 -> savePet();
-                case 2 -> System.out.println("case 2");
+                case 2 -> modifyPet();
                 case 3 -> System.out.println("case 3");
                 case 4 -> showAllPets();
                 case 5 -> {
@@ -221,5 +221,48 @@ public class PetService {
             System.out.print(result);
         }
         System.out.println("=================");
+    }
+
+    private static void modifyPet() {
+        System.out.println("------------\nAlterando Pet:");
+        List<String> results = searchPet();
+
+        System.out.println("=================");
+        for (String result : results) {
+            System.out.print(result);
+        }
+        System.out.println("=================");
+
+        System.out.println("Qual Pet deseja modificar?(Digite o numero da lista de respostas)");
+        int petId = Integer.parseInt(sc.nextLine()) - 1;
+
+        String petToModify = results.get(petId);
+
+        PetRepository.modifyPet(petToModify);
+    }
+
+    public static int selectCharacteristic() {
+        System.out.println("""
+                Qual característica deseja alterar?
+                1 - Nome
+                2 - Endereço
+                3 - Idade
+                4 - Peso
+                5 - Raça""");
+        int op = Integer.parseInt(sc.nextLine());
+        infoSwitch(op);
+        op--;
+        if (op >= 2) op += 2;
+        return op;
+    }
+
+    private static void infoSwitch(int option) {
+        switch (option) {
+            case 1 -> System.out.print("Digite o novo nome do pet desejado: ");
+            case 2 -> System.out.print("Digite o novo endereço do pet desejado: ");
+            case 3 -> System.out.print("Digite a nova idade do pet desejado: ");
+            case 4 -> System.out.print("Digite o novo peso do pet desejado: ");
+            case 5 -> System.out.print("Digite a nova raça do pet desejado: ");
+        }
     }
 }

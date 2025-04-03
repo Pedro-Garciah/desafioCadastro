@@ -1,6 +1,7 @@
 package repository;
 
 import domain.Pet;
+import service.PetService;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PetRepository {
 
@@ -141,5 +143,58 @@ public class PetRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void modifyPet(String petToModify) {
+        Path path = Paths.get("petsCadastrados/");
+        Scanner sc = new Scanner(System.in);
+
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
+            for (Path path1 : stream) {
+
+                List<String> data = Files.readAllLines(path1);
+
+                if (isPetEqual(petToModify, data)) {
+                    int op = PetService.selectCharacteristic();
+                    String newData = sc.nextLine().trim();
+
+                    data.set(op, ++op + " - " + newData);
+
+                    String oldFileDate = path1.getFileName().toString().substring(0, 13);
+                    String formattedPetName = data.getFirst().substring(4).toUpperCase().trim().replaceAll(" +", "");
+
+                    Path newFile = Paths.get("petsCadastrados/" + oldFileDate + "-" + formattedPetName + ".txt");
+
+                    if (Files.notExists(newFile)) {
+                        Files.createFile(newFile);
+                        Files.delete(path1);
+                    }
+
+                    BufferedWriter writer = Files.newBufferedWriter(newFile);
+
+                    int contador = 1;
+                    for (String dataLine : data) {
+                        writer.write(dataLine);
+                        writer.newLine();
+                        contador++;
+                    }
+                    writer.close();
+
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean isPetEqual(String petToModify, List<String> data) {
+        petToModify = petToModify.substring(3);
+
+        String petTxt = String.format("%s - %s - %s - %s - %s - %s - %s\n", data.get(0).substring(4), data.get(1).substring(4),
+                data.get(2).substring(4), data.get(3).substring(4),
+                data.get(4).substring(4), data.get(5).substring(4),
+                data.get(6).substring(4));
+
+        return petToModify.trim().equalsIgnoreCase(petTxt.trim());
     }
 }
