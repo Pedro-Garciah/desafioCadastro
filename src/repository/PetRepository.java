@@ -61,11 +61,11 @@ public class PetRepository {
     public static List<String> showAllPets() {
         Path path = Paths.get("petsCadastrados/");
         List<String> results = new ArrayList<>();
-
+        int count = 1;
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
             for (Path path1 : stream) {
                 List<String> data = Files.readAllLines(path1);
-                int count = 1;
+
                 results.add(String.format("%d. %s - %s - %s - %s - %s - %s - %s\n",
                         count, data.get(0).substring(4), data.get(1).substring(4),
                         data.get(2).substring(4), data.get(3).substring(4),

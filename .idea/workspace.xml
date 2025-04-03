@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eb16970-0ab4-4965-9610-d7a4c8a064fd" name="Changes" comment="refactor: adiciona arquivos .class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/PetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/PetRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/PetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/PetService.java" afterDir="false" />
-    </list>
+    <list default="true" id="0eb16970-0ab4-4965-9610-d7a4c8a064fd" name="Changes" comment="refactor: adiciona arquivos .class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +39,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feat/altera-pet",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
