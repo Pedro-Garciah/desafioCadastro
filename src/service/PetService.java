@@ -34,8 +34,15 @@ public class PetService {
                 case 1 -> savePet();
                 case 2 -> System.out.println("case 2");
                 case 3 -> System.out.println("case 3");
-                case 4 -> System.out.println("case 4");
-                case 5 -> System.out.println("case 5");
+                case 4 -> showAllPets();
+                case 5 -> {
+                    List<String> results = searchPet();
+                    System.out.println("=================");
+                    for (String result : results) {
+                        System.out.print(result);
+                    }
+                    System.out.println("=================");
+                }
                 case 6 -> {
                     System.out.println("Encerrando programa...");
                     showMenu = false;
@@ -147,5 +154,72 @@ public class PetService {
             return text;
 
         throw new IllegalArgumentException("A raça não pode conter caracteres especiais.");
+    }
+
+    public static List<String> searchPet() {
+        String date = "";
+
+        System.out.println("Qual o tipo de animal? (Gato/Cachorro)");
+        String type = sc.nextLine();
+
+        System.out.println("""
+                Critérios:
+                1 - Nome ou sobrenome
+                2 - Sexo
+                3 - Endereço
+                4 - Idade
+                5 - Peso
+                6 - Raça""");
+
+        System.out.println("Qual o primeiro critério que deseja utilizar na busca?");
+        int option1 = Integer.parseInt(sc.nextLine());
+
+        System.out.println("Qual o segundo critério que deseja utilizar na busca? (Deixe em branco caso não queira utilizar)");
+        String option2String = sc.nextLine();
+
+        System.out.println("Deseja buscar por Data de Cadastro?(S/N)");
+        if (sc.nextLine().equalsIgnoreCase("s")) {
+            System.out.println("Digite o numero do mes");
+            String month = sc.nextLine();
+            if (Integer.parseInt(month) < 10) month = "0" + month;
+
+            System.out.println("Digite o ano");
+            String year = sc.nextLine();
+
+            date = year + month;
+        }
+        searchSwitch(option1);
+        String search1 = sc.nextLine().trim();
+
+        if (!option2String.isEmpty()) {
+            int option2 = Integer.parseInt(option2String);
+            searchSwitch(option2);
+            String search2 = sc.nextLine().trim();
+
+            return PetRepository.searchPet(date, option1, option2, search1, search2, type);
+        }
+
+        return PetRepository.searchPet(date, option1, search1, type);
+    }
+
+    private static void searchSwitch(int option) {
+        switch (option) {
+            case 1 -> System.out.print("Digite o nome do pet desejado: ");
+            case 2 -> System.out.print("Digite o sexo do pet desejado: ");
+            case 3 -> System.out.print("Digite o endereço do pet desejado: ");
+            case 4 -> System.out.print("Digite a idade do pet desejado: ");
+            case 5 -> System.out.print("Digite o peso do pet desejado: ");
+            case 6 -> System.out.print("Digite a raça do pet desejado: ");
+        }
+    }
+
+    private static void showAllPets(){
+        List<String> allResults = PetRepository.showAllPets();
+
+        System.out.println("=================");
+        for (String result : allResults) {
+            System.out.print(result);
+        }
+        System.out.println("=================");
     }
 }
