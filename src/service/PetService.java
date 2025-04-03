@@ -33,7 +33,7 @@ public class PetService {
             switch (option) {
                 case 1 -> savePet();
                 case 2 -> modifyPet();
-                case 3 -> System.out.println("case 3");
+                case 3 -> deletePet();
                 case 4 -> showAllPets();
                 case 5 -> {
                     List<String> results = searchPet();
@@ -263,6 +263,36 @@ public class PetService {
             case 3 -> System.out.print("Digite a nova idade do pet desejado: ");
             case 4 -> System.out.print("Digite o novo peso do pet desejado: ");
             case 5 -> System.out.print("Digite a nova raça do pet desejado: ");
+        }
+    }
+
+    private static void deletePet() {
+        System.out.println("------------\nDeletando Pet:");
+        List<String> results = searchPet();
+        int petId;
+
+
+        while (true) {
+            System.out.println("=================");
+            for (String result : results) {
+                System.out.print(result);
+            }
+            System.out.println("=================");
+
+            System.out.println("Qual Pet deseja deletar?(Digite o numero da lista de respostas)");
+            petId = Integer.parseInt(sc.nextLine()) - 1;
+
+            if (petId > 0 && petId < results.size() - 1)
+                break;
+        }
+
+        System.out.println("Realmente deseja deletar este Pet?(S/N)");
+        String confirmation = sc.nextLine();
+
+        if (confirmation.equalsIgnoreCase("s")) {
+            String petToDelete = results.get(petId);
+            PetRepository.deletePet(petToDelete);
+            System.out.println("Pet deletado com sucesso.");
         }
     }
 }

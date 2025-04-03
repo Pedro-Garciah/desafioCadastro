@@ -197,4 +197,20 @@ public class PetRepository {
 
         return petToModify.trim().equalsIgnoreCase(petTxt.trim());
     }
+
+    public static void deletePet(String petToDelete) {
+        Path path = Paths.get("petsCadastrados/");
+
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
+            for (Path path1 : stream) {
+
+                List<String> data = Files.readAllLines(path1);
+
+                if (isPetEqual(petToDelete, data))
+                    Files.delete(path1);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
